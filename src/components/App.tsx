@@ -6,8 +6,14 @@ const App = () => {
   const [newTodo, setNewTodo] = useState('');
 
   const addTodo = () => {
+    if(newTodo.trim()){
       setTodos([...todos, newTodo]);
       setNewTodo('');
+    }
+  };
+
+  const delTodo = (index: number) => {
+    setTodos(todos.filter((thetodo, theIndexOfTheTodo) => theIndexOfTheTodo !== index));
   };
 
   return (
@@ -21,12 +27,17 @@ const App = () => {
       />
       <button onClick={addTodo}>add todo</button>
       <ul>
-        {todos.map((todo) => (
-          <li> {todo}</li>
+        {todos.map((todo, index) => (
+          <li>
+            {todo}
+            <button onClick={() => delTodo(index)}>Delete</button>
+          </li>
         ))}
-        </ul>
+      </ul>
+
+        <h5>todos :{todos}</h5>
+        <h5>newTodo:{newTodo}</h5>
     </div>
   );
 };
 export default App
-//new branch

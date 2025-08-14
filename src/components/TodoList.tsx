@@ -76,3 +76,4 @@ const TodoList = ({ todos, setTodos }: TodoListProps) => {
 };
 
 export default TodoList;
+ //added an option to edit the todo 
